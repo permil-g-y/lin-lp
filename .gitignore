@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# 作業中の中間生成物
+*.bak
+_比較_*.png
+
+# 元素材（サイズが大きく配信にも不要。ローカルで保管）
+素材/
+LP_export/uploads/
+ChatGPT Image *.png

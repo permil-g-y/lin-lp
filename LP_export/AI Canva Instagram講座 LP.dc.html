@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const n=new URLSearchParams(location.search).get("theme");if(n==="light"||n==="dark"){document.documentElement.dataset.theme=n}}{if(new URLSearchParams(location.search).get("_omthumb")==="1"){const n=(f)=>{const g=f.focus;if(!g)return;f.focus=function(h){g.call(this,{...h,preventScroll:true})}};n(HTMLElement.prototype);n(SVGElement.prototype);if(typeof MathMLElement!=="undefined"){n(MathMLElement.prototype)}const d=(f)=>{f.removeAttribute("autofocus");f.inert=true;if(!(f instanceof HTMLElement))f.removeAttribute("tabindex")};const p=(f)=>{if(f.hasAttribute("autofocus"))d(f);for(const g of f.querySelectorAll("[autofocus]")){d(g)}};p(document.documentElement);new MutationObserver((f)=>{for(const g of f){for(const h of g.addedNodes){if(h.nodeType===1)p(h)}}}).observe(document,{childList:true,subtree:true})}}{const n=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const d=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(d&&d!=="normal")return;const p=(y)=>{if(!y)return null;const m=getComputedStyle(y).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!m)return null;const w=m[4]==null?1:parseFloat(m[4])/(m[4].endsWith("%")?100:1);if(w<0.99)return null;return[+m[1],+m[2],+m[3]]};const f=p(document.body)||p(document.documentElement);if(!f)return;const g=(y)=>{const m=y/255;return m<=0.04045?m/12.92:((m+0.055)/1.055)**2.4};const h=0.2126*g(f[0])+0.7152*g(f[1])+0.0722*g(f[2]);document.documentElement.style.setProperty("color-scheme",h<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")n();else window.addEventListener("load",n)}var I=["https://claude.ai","https://preview.claude.ai","https://5a3e790d-21a7-4a25-86bf-bc6963a3b690.claudeusercontent.com"];var B=true;var K=false;var C=()=>{};if(K===true){try{const n=setTimeout.bind(window);const d=1e4;const p=15;const f=1e4;const g=120000;const h=200;const y=(o)=>{try{let r;if(typeof o==="string")r=o;else if(o instanceof URL)r=o.href;else if(typeof Request!=="undefined"&&o instanceof Request)r=o.url;else return null;if(!r)return null;const l=document.baseURI;const i=new URL(r,l);if(i.protocol!=="http:"&&i.protocol!=="https:")return null;if(i.origin!==new URL(l).origin)return null;return i.origin+i.pathname}catch{return null}};const m=new Map;const w=(o)=>{let r=m.get(o);if(!r){if(m.size>=h){const l=m.keys().next().value;if(l!==undefined)m.delete(l)}r={fails:[],until:0,cooldown:f,hard:false};m.set(o,r)}return r};const R=(o)=>{const r=m.get(o);return r!==undefined&&r.until>Date.now()};const O=(o,r)=>{const l=Date.now();const i=w(o);if(r)i.hard=true;if(i.until>l)return;i.fails.push(l);while(i.fails.length>0&&i.fails[0]<=l-d)i.fails.shift();if(i.fails.length>=p){i.until=l+i.cooldown;if(i.hard)i.cooldown=Math.min(i.cooldown*2,g);i.fails.length=0;try{n(()=>{try{S(true)}catch{}},i.until-l+100)}catch{}console.warn("[omelette] asset circuit breaker: pausing requests to "+o+" for "+Math.round((i.until-l)/1000)+"s after "+p+" failures in "+d/1000+"s")}};const e=(o)=>{m.delete(o)};const t=100;const a=new WeakMap;const u=new Set;let s=null;const S=(o)=>{for(const r of Array.from(u)){try{const l=a.get(r);if(l===undefined){u.delete(r);continue}if(o){const i=y(l);if(i!==null&&R(i))continue}a.delete(r);u.delete(r);if(s!==null)s.call(r,l)}catch{}}};C=()=>{try{m.clear();S(false)}catch{}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")C()});const _=window.fetch;if(typeof _==="function"){const o=function(...r){let l=null;try{l=y(r[0])}catch{}if(l!==null&&R(l)){let c;try{if(r[1]&&r[1].signal!==undefined){c=r[1].signal||undefined}else if(typeof Request!=="undefined"&&r[0]instanceof Request){c=r[0].signal||undefined}}catch{c=undefined}return new Promise((k,b)=>{const E=()=>{try{return c.reason!==undefined?c.reason:new DOMException("The operation was aborted.","AbortError")}catch{return new DOMException("The operation was aborted.","AbortError")}};try{if(c&&c.aborted){b(E());return}}catch{}let T=false;const j=()=>{if(T)return;T=true;b(E())};try{if(c)c.addEventListener("abort",j,{once:true})}catch{}n(()=>{if(T)return;T=true;try{if(c)c.removeEventListener("abort",j)}catch{}let L;try{L=new Response(null,{status:429,statusText:"Too Many Requests",headers:{"Retry-After":"10"}})}catch{L={ok:false,status:429}}k(L)},250)})}const i=_.apply(window,r);if(l!==null){const c=l;i.then((k)=>{try{if(k.ok)e(c);else if(k.status===401||k.status===403||k.status===404||k.status===429){O(c,k.status!==404)}}catch{}},()=>{})}return i};window.fetch=o}const v=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(v!==undefined&&v.set!==undefined&&v.get!==undefined){const o=v.set;s=o;Object.defineProperty(HTMLImageElement.prototype,"src",{configurable:true,enumerable:v.enumerable,get:v.get,set(r){const l=`${r}`;try{const i=y(l);if(i!==null&&R(i)){a.set(this,l);if(u.size<t)u.add(this);return}}catch{}try{a.delete(this);u.delete(this)}catch{}o.call(this,l)}})}try{const o=HTMLImageElement.prototype.setAttribute;HTMLImageElement.prototype.setAttribute=function(r,l){if(arguments.length<2){o.apply(this,arguments);return}if(typeof r==="string"&&r.toLowerCase()==="src"){const i=`${l}`;try{const c=y(i);if(c!==null&&R(c)){a.set(this,i);if(u.size<t)u.add(this);return}a.delete(this);u.delete(this)}catch{}o.call(this,r,i);return}o.call(this,r,l)}}catch{}window.addEventListener("error",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)O(l,true)}}catch{}},true);window.addEventListener("load",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)e(l);const i=a.get(r);if(i!==undefined){let c=false;try{c=new URL(i,document.baseURI).href===new URL(r.currentSrc||r.src||"",document.baseURI).href}catch{c=false}if(c){a.delete(r);u.delete(r)}}}}catch{}},true)}catch{}}var J=30000;var G=3000;document.addEventListener("DOMContentLoaded",()=>{const n=window.Babel;const d="om-src-id";if(n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[d])){n.registerPlugin(d,({types:h})=>({visitor:{JSXOpeningElement(y,m){const w=y.node;if(w.name&&w.name.type==="JSXMemberExpression")return;for(let t=0;t<w.attributes.length;t++){const a=w.attributes[t];if(a.type==="JSXAttribute"&&a.name&&a.name.name==="data-om-id")return}const R=m.file&&m.file.opts&&m.file.opts.filename||"?";const O=w.loc&&w.loc.start;const e=`jsx:${R}:${w.start??0}:${O?O.line:0}:${O?O.column+1:0}`;w.attributes.push(h.jsxAttribute(h.jsxIdentifier("data-om-id"),h.stringLiteral(e)))}}}))}const p="om-text-extract";let f=false;if(B&&n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[p])){const h=window.React;if(h&&h.useSyncExternalStore&&h.createElement){f=true;const y={};const m=new Set;let w=0;window.__omTextO=y;window.__omTextSet=(e)=>{for(const t in e){const a=e[t];if(a==null)delete y[t];else y[t]=a}w++;m.forEach((t)=>t())};const R=(e)=>{m.add(e);return()=>m.delete(e)};const O=()=>w;window.__OmT=function e(t){h.useSyncExternalStore(R,O,O);return h.createElement("span",{"data-om-text":t.i,className:"__om-t"},t.i in y?y[t.i]:t.children)};n.registerPlugin(p,({types:e})=>{const t={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const a={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const u=(o,r)=>e.logicalExpression("??",e.memberExpression(e.logicalExpression("||",e.memberExpression(e.identifier("window"),e.identifier("__omTextO")),e.objectExpression([])),e.stringLiteral(o),true),r);const s=(o)=>o.file&&o.file.opts&&o.file.opts.filename||"?";const S=(o)=>o.file&&o.file.code||"";const _=(o,r)=>{const l=(c)=>c&&c.start!=null&&c.end!=null&&(c.type==="StringLiteral"||c.type==="TemplateLiteral"&&c.expressions.length===0)?[c.start,c.end]:null;const i=l(r);if(i)return i;if(r&&r.type==="Identifier"){const c=o.scope.getBinding(r.name);if(c&&c.constant&&c.path.node.type==="VariableDeclarator"){return l(c.path.node.init)}}return null};const v=(o,r,l)=>{const i=o.node;let c=false;const k=(E,T)=>{c=true;return e.jsxElement(e.jsxOpeningElement(e.jsxIdentifier("__OmT"),[e.jsxAttribute(e.jsxIdentifier("i"),e.stringLiteral(E))],false),e.jsxClosingElement(e.jsxIdentifier("__OmT")),[T],false)};const b=i.children.map((E)=>{if(E.type==="JSXText"){if(E.start==null||E.end==null)return E;const T=l.slice(E.start,E.end);const j=T.length-T.trimStart().length;const L=T.length-T.trimEnd().length;if(j+L>=T.length)return E;return k(`txt:${r}:${E.start+j}:${E.end-L}`,E)}if(E.type==="JSXExpressionContainer"){const T=_(o,E.expression);if(T)return k(`str:${r}:${T[0]}:${T[1]}`,E)}return E});if(c)i.children=b};return{visitor:{JSXOpeningElement(o,r){const l=o.node;const i=s(r);const c={};for(let k=0;k<l.attributes.length;k++){const b=l.attributes[k];if(b.type!=="JSXAttribute"||!b.name)continue;const E=b.name.name;if(!a[E])continue;if(!b.value||b.value.type!=="StringLiteral")continue;if(b.value.start==null||b.value.end==null)continue;const T=`txt:${i}:${b.value.start}:${b.value.end}`;c[E]=T;b.value=e.jsxExpressionContainer(u(T,e.stringLiteral(b.value.value)))}if(Object.keys(c).length){l.attributes.push(e.jsxAttribute(e.jsxIdentifier("data-om-text-attrs"),e.stringLiteral(JSON.stringify(c))))}},JSXElement(o,r){const l=o.node.openingElement;const i=l&&l.name&&l.name.name;if(i==="__OmT")return;if(typeof i==="string"&&t[i])return;v(o,s(r),S(r))},JSXFragment(o,r){v(o,s(r),S(r))}}}})}}const g=f?["transform-react-jsx-source",d,p]:["transform-react-jsx-source",d];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((h,y)=>{const m=h.getAttribute("data-plugins")||"";const w=g.filter((R)=>m.indexOf(R)<0);if(w.length){h.setAttribute("data-plugins",m?`${m},${w.join(",")}`:w.join(","))}if(!h.hasAttribute("data-filename")){h.setAttribute("data-filename",h.getAttribute("src")||`inline-${y}`)}})});var A=window.parent;var U="not editable here — open the project in the Claude Design editor to save";var W=()=>Promise.resolve({persisted:false,noHost:true,reason:U});var H=W;var M="data/storage.json";var z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.match(/\/projects\/([^/]+)\/serve\//);if(d)return d[1];return n.hostname.split(".")[0]||""}catch{return location.hostname.split(".")[0]||""}};var Z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.indexOf("/serve/");if(d>=0)return n.origin+n.pathname.slice(0,d+"/serve/".length)+M}catch{}return"./"+M};var x=null;var N=()=>{if(!x){x=fetch(Z(),{cache:"no-store"}).then((n)=>{if(n.ok)return n.text();return n.status===404?"":null}).catch(()=>null).then((n)=>{if(n===null){x=null;return null}const d=new Map;if(!n)return d;let p;try{p=JSON.parse(n)}catch{console.warn("[omelette.storage] "+M+" is not valid JSON; treating the store as unreadable so a save cannot overwrite the "+"hand-edited bytes. Fix the JSON (or delete the file) to re-enable persistence.");x=null;return null}if(p===null||typeof p!=="object"||Array.isArray(p)){console.warn("[omelette.storage] "+M+" doesn't hold a JSON object; treating the store as unreadable so a save cannot "+"overwrite the hand-edited bytes. Make the top level a JSON object to re-enable persistence.");x=null;return null}const f=p;if("data"in f){const g=f.data;if(g===null||typeof g!=="object"||Array.isArray(g)){console.warn("[omelette.storage] "+M+' has a "data" field that is not a JSON object; treating the store as unreadable so a '+'save cannot overwrite the hand-edited bytes. Make "data" a JSON object to re-enable persistence.');x=null;return null}const h=f._meta;const y=h!==null&&typeof h==="object"?h.project:undefined;if(typeof y==="string"&&y!==""&&y!==z())return d;for(const m of Object.keys(g))d.set(m,g[m]);return d}for(const g of Object.keys(f)){if(g!=="_meta")d.set(g,f[g])}return d})}return x};var F=(n)=>H(M,JSON.stringify({_meta:{project:z(),version:1},data:Object.fromEntries(n)},null,2));var D=Promise.resolve();var $=(n)=>{const d=D.then(n);D=d.then(()=>{return},()=>{return});return d};var V=/sk-(?:ant-)?[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[a-z]-[A-Za-z0-9][A-Za-z0-9-]{9,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;var Y=/password|passwd|secret|api[_-]?key|access[_-]?token|auth[_-]?token|credential/i;var Q=(n,d,p)=>{if(V.test(d)||Y.test(n)&&typeof p==="string"&&p.length>=8){console.warn('[omelette.storage] the value for "'+n+'" looks like a credential. The storage file is a plaintext project file — visible to '+"everyone with project access and copied when the project is duplicated. Do not store secrets here.")}};var q={persisted:false,reason:"could not load the existing store — not overwriting it"};var X={persisted:false,reason:"stored value changed since a failed read — re-read this key before saving"};var P=new Set;var ee={get:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.get: key must be a string"))}return $(N).then((d)=>{if(d===null){P.add(n);return null}P.delete(n);if(!d.has(n))return null;const p=d.get(n);return p==null?null:JSON.parse(JSON.stringify(p))})},set:(n,d)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.set: key must be a string"))}let p;try{p=JSON.stringify(d)}catch(g){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable ("+String(g)+")"))}if(p===undefined){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable"))}Q(n,p,d);const f=JSON.parse(p);return $(()=>N().then((g)=>{if(g===null)return q;if(P.has(n)){if(g.has(n))return X;P.delete(n)}g.set(n,f);return F(g)}))},delete:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.delete: key must be a string"))}return $(()=>N().then((d)=>{if(d===null)return q;if(P.has(n)){if(d.has(n))return X;P.delete(n)}d.delete(n);return F(d)}))},keys:()=>$(N).then((n)=>n===null?[]:Array.from(n.keys()))};window.omelette={writeFile:(n,d)=>H(n,d).then((p)=>{if(!p.persisted&&!p.noHost){throw new Error(p.reason||"write failed")}}),storage:ee};if(A&&A!==window){const n=(e,t)=>{try{A.postMessage({__omelette_log:true,type:e,data:t},"*")}catch{}};["log","warn","error"].forEach((e)=>{const t=console[e];console[e]=(...a)=>{const u=a.map((s)=>{try{return typeof s==="object"?JSON.stringify(s):String(s)}catch{try{return String(s)}catch{return"[unstringifiable]"}}}).join(" ");n(e,u);t.apply(console,a)}});window.addEventListener("error",(e)=>{const t=e.target;if(t&&t!==window&&t.tagName){const a=t.src||t.href||"";n("resource_error",`${t.tagName} failed to load: ${a}`)}else{n("error",`${e.message||"Unknown error"} at ${e.filename||"?"}:${e.lineno||0}:${e.colno||0}`)}},true);window.addEventListener("unhandledrejection",(e)=>{const t=e.reason;const a=t instanceof Error?`${t.message} ${t.stack}`:String(t);n("error",`Unhandled rejection: ${a}`)});window.addEventListener("click",(e)=>{if(e.defaultPrevented||e.button!==0)return;if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=e.composedPath?e.composedPath():[];const a=["button","input","select","textarea","summary","label"];let u=null;for(const v of t){if(!(v instanceof Element))continue;if(v.localName==="a"){if(!(v instanceof HTMLAnchorElement))return;u=v;break}if(a.indexOf(v.localName)!==-1)return}if(!u)return;if(u.isContentEditable)return;const s=u.closest("[contenteditable]");if(s&&s.getAttribute("contenteditable")!=="false")return;const S=(u.getAttribute("target")||"_self").toLowerCase();if(S!=="_self"&&S!=="_top"&&S!=="_parent")return;let _;try{_=new URL(u.href)}catch{return}if(_.protocol!=="http:"&&_.protocol!=="https:")return;if(location.origin==="null")return;if(_.origin===location.origin)return;e.preventDefault();window.open(_.href,"_blank","noopener,noreferrer")});const d=()=>{try{A.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(d).observe(document.documentElement);const p=()=>{d();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const e=()=>document.getElementById("root")||document.querySelector("body > div[id]");const t=e()?.firstElementChild??null;let a=0;const u=()=>{const s=e();if(s&&s.firstElementChild!==t||++a>30){d();return}setTimeout(u,100)};setTimeout(u,100)};if(document.readyState==="complete")p();else window.addEventListener("load",p);const f={};let g=0;const h=(e)=>new Promise((t,a)=>{if(!I.length){a(new Error("claude.complete: no parent origin"));return}const u=`c${++g}`;const s=()=>setTimeout(()=>{delete f[u];a(new Error(`claude.complete: no data for ${J/1000}s`))},J);const S=s();f[u]={resolve:t,reject:a,text:"",t:S,arm:s};try{for(const _ of I){A.postMessage({__om_api:true,id:u,body:e},_)}}catch(_){clearTimeout(S);delete f[u];a(_)}});const y=8;const m=async(e,t)=>{if(!Array.isArray(e.messages)){throw new Error("claude.complete: tools require a messages array")}const a=e.messages.slice();const u={...e,tools:e.tools.map((_)=>{if(_===null||typeof _!=="object")return _;const v={};for(const o of Object.keys(_)){if(typeof _[o]!=="function")v[o]=_[o]}return v})};const s=u.tool_choice;const S=s!=null&&(s.type==="any"||s.type==="tool")?{...u,tool_choice:s.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:s.disable_parallel_tool_use}:{type:"auto"}}:u;for(let _=0;_<y;_++){const v=await h({..._===0?u:S,messages:a});const o=v.message;const r=o&&Array.isArray(o.content)?o.content:null;const l=r?r.filter((c)=>c?.type==="tool_use"):[];if(o?.stop_reason!=="tool_use"||l.length===0){return v.text}const i=[];for(const c of l){const k=t.get(c.name);if(!k){i.push({type:"tool_result",tool_use_id:c.id,content:`no handler for tool "${c.name}"`,is_error:true});continue}try{const b=await k(c.input);const E=typeof b==="string"?b:O(b)??"";i.push({type:"tool_result",tool_use_id:c.id,content:E})}catch(b){i.push({type:"tool_result",tool_use_id:c.id,content:String(b?.message??b??"tool handler failed"),is_error:true})}}a.push({role:"assistant",content:r},{role:"user",content:i})}throw new Error(`claude.complete: exceeded ${y} tool turns`)};window.claude={complete(e){const t=e;if(t!==null&&typeof t==="object"&&Array.isArray(t.tools)&&t.tools.some((a)=>a!==null&&typeof a==="object"&&typeof a.run==="function")){const a=new Map;for(const u of t.tools){if(u!==null&&typeof u==="object"&&typeof u.run==="function"){a.set(String(u.name),u.run)}}return m(t,a)}return h(e).then((a)=>a.text)}};const w={};let R=0;H=(e,t)=>new Promise((a)=>{if(!I.length){a({persisted:false,noHost:true,reason:U});return}const u=`f${++R}`;const s=setTimeout(()=>{delete w[u];a({persisted:false,noHost:true,reason:U})},G);w[u]={settle:a,t:s};try{for(const S of I){A.postMessage({__om_file:true,id:u,op:"write",path:e,content:t},S)}}catch{clearTimeout(s);delete w[u];a({persisted:false,noHost:true,reason:U})}});const O=(e)=>{try{return JSON.stringify(e)}catch{return JSON.stringify(String(e))}};window.addEventListener("message",(e)=>{if(I.indexOf(e.origin)<0)return;if(e.source!==A)return;const t=e.data;if(!t)return;if(t.type==="omelette-preview-refresh"){if(typeof t.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(t.token))return;const s=Math.max(1,Math.floor((t.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+t.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+s;C();return}if(t.__om_file_r){const s=w[t.id];if(!s)return;clearTimeout(s.t);delete w[t.id];s.settle(t.ok?{persisted:true}:{persisted:false,reason:t.error||"write failed"});return}if(t.__om_api_r){const s=f[t.id];if(!s)return;if(t.error!=null){clearTimeout(s.t);delete f[t.id];s.reject(new Error(t.error));return}if(t.chunk!=null){clearTimeout(s.t);s.t=s.arm();s.text+=t.chunk;return}if(t.done){clearTimeout(s.t);delete f[t.id];s.resolve({text:t.text!=null?t.text:s.text,message:t.message});return}return}if(!t.__om_eval)return;const a=t;const u=(s)=>{e.source.postMessage({...s,__om_eval_r:1,id:a.id},e.origin)};try{const s=(0,eval)(a.code);if(s&&typeof s.then==="function"){s.then((S)=>u({ok:1,v:O(S)}),(S)=>u({ok:0,e:String(S)}))}else{u({ok:1,v:O(s)})}}catch(s){u({ok:0,e:String(s)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&family=Yusei+Magic&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+body{background:#FFFCFA;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box;text-wrap:pretty}
+a{color:#D2708D}
+a:hover{color:#EE7C9B}
+summary::-webkit-details-marker{display:none}
+[data-only="sp"]{display:none}
+@media (max-width:640px){
+  [data-only="pc"]{display:none!important}
+  [data-only="sp"]{display:block!important}
+  section{padding-top:44px!important;padding-bottom:44px!important;padding-left:18px!important;padding-right:18px!important}
+  section[data-sp-nopad]{padding:0!important}
+  footer{padding:26px 18px 22px!important}
+  [data-sp-carousel]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px!important;margin-right:-18px!important;padding:0 18px 6px 0!important;scrollbar-width:none}
+  [data-sp-carousel]::-webkit-scrollbar{display:none}
+  [data-sp-carousel]>div{flex:0 0 76%!important;scroll-snap-align:center;max-width:76%!important}
+  [data-sp-flow]{flex-direction:column!important;align-items:stretch!important}
+  [data-sp-flow]>p{margin:6px auto!important;transform:rotate(90deg)}
+  [data-sp-flow]>div{flex:none!important}
+  [data-sp-tl]{flex-direction:column!important;align-items:stretch!important;padding-left:2px!important}
+  [data-sp-tl]>p{display:none!important}
+  [data-sp-tl]>div{flex:none!important;max-width:none!important;text-align:left!important;border-top:none!important;padding:0 0 20px 22px!important;border-left:1px solid rgba(214,150,165,.45)!important}
+  [data-sp-tl]>div>div{border-top:none!important}
+  [data-sp-tl] img{aspect-ratio:16/9!important}
+  [data-sp-rev]{flex-direction:column-reverse!important}
+  [data-sp-fnav]{flex-direction:column!important;align-items:flex-start!important;gap:0!important}
+  [data-sp-fnav]>span{display:none!important}
+  [data-sp-fnav]>a{padding:12px 0!important;font-size:13.5px!important}
+  [data-sp-fixed]{display:block!important}
+  body{padding-bottom:78px}
+}
+</style>
+</helmet>
+
+<div style="font-family:'Noto Sans JP',system-ui,sans-serif;color:#413B3B;background:#FFFCFA;overflow-x:hidden">
+
+<section data-only="sp" data-sp-nopad data-screen-label="01 FV スマホ" style="position:relative;background:#FEF3F2;overflow:hidden">
+  <div style="position:relative">
+    <img src="img/fv-laptop.png" alt="自宅のダイニングでノートパソコンに向かう女性" style="display:block;width:100%;height:58vh;min-height:320px;object-fit:cover;object-position:66% 38%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,249,246,.2) 0%,rgba(255,249,246,0) 32%,rgba(254,243,242,.72) 74%,#FEF3F2 100%)"></div>
+    <p style="position:absolute;top:18px;left:18px;margin:0;font-family:'Yusei Magic',cursive;font-size:13px;color:#C9566F;text-shadow:0 1px 6px rgba(255,255,255,.7)">✧ “好き”を、わたしの仕事に。</p>
+  </div>
+  <div style="position:relative;margin:-104px 14px 0;padding:22px 20px 24px;background:rgba(255,255,255,.86);border:1px solid rgba(238,124,155,.22);border-radius:18px;box-shadow:0 10px 26px rgba(200,150,160,.14)">
+    <h1 style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:500;line-height:1.4;letter-spacing:.06em;color:#3B3434">
+      <span style="display:block;font-size:16px;letter-spacing:.12em">副業・在宅ワークの</span>
+      <span style="display:block;margin-top:.2em;font-size:30px;font-weight:600;letter-spacing:.08em">第一歩<span style="font-size:.6em">を、</span></span>
+      <span style="display:block;margin-top:.06em;font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;color:#EE7C9B;line-height:1.08">Instagram<span style="font-family:'Shippori Mincho B1',serif;font-size:.42em;color:#3B3434;letter-spacing:.06em">から。</span></span>
+    </h1>
+    <p style="margin:16px 0 0;display:inline-block;background:#FDF0F2;padding:8px 14px;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.12em;color:#4A4242">AI × Canva <span style="color:#EE7C9B">無料</span>Instagram講座</p>
+    <p style="margin:12px 0 0;font-size:13px;line-height:1.95;color:#5E5555">ChatGPTとCanvaを使って、<br>Instagram投稿を<span style="color:#D2708D;font-weight:700">ゼロから作れる</span>ように。</p>
+    <div style="margin:16px 0 0;display:flex;align-items:flex-start">
+      <div style="flex:1"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:9.5px;letter-spacing:.24em;color:#E3A0B2">BEGINNER</p><p style="margin:5px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.04em;color:#4A3F3F">未経験OK</p></div>
+      <div style="width:1px;height:32px;background:rgba(214,150,165,.32)"></div>
+      <div style="flex:1;padding-left:10px"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:9.5px;letter-spacing:.24em;color:#E3A0B2">FREE</p><p style="margin:5px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.04em;color:#4A3F3F">完全無料</p></div>
+      <div style="width:1px;height:32px;background:rgba(214,150,165,.32)"></div>
+      <div style="flex:1;padding-left:10px"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:9.5px;letter-spacing:.24em;color:#E3A0B2">SUPPORT</p><p style="margin:5px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.04em;color:#4A3F3F">質問し放題</p></div>
+    </div>
+    <p style="margin:18px 0 8px;font-family:'Yusei Magic',cursive;font-size:13px;color:#D2708D">かんたん30秒。まずはLINEから</p>
+    <a href="#apply" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 16px;background:#06C755;color:#fff;font-size:14.5px;font-weight:700;letter-spacing:.06em;text-decoration:none;border-radius:999px;box-shadow:0 8px 18px rgba(6,199,85,.24)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" style="flex:none"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg>LINEから30秒で無料申し込み</a>
+  </div>
+  <div style="height:34px"></div>
+</section>
+
+<section data-only="pc" data-screen-label="01 FV" style="position:relative;background:linear-gradient(102deg,#FFF9F6 0%,#FEF3F2 40%,#FCECEC 72%,#FAE6E7 100%);overflow:hidden">
+  <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));align-items:center;width:100%">
+    <div style="position:relative;z-index:3;padding:clamp(52px,6vw,96px) clamp(24px,3.4vw,52px);max-width:640px;justify-self:end;width:100%">
+      <p style="position:absolute;top:clamp(30px,4vw,64px);right:clamp(10px,1.6vw,20px);margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.42em;color:rgba(200,138,156,.55);writing-mode:vertical-rl">FREE ONLINE COURSE</p>
+      <p style="margin:0;display:inline-block;font-family:'Yusei Magic',cursive;font-size:clamp(14px,1.6vw,17px);color:#D2708D;letter-spacing:.04em;padding-bottom:7px;border-bottom:1px solid rgba(238,124,155,.45)"><span style="color:#EEA6B8">✧</span> “好き”を、わたしの仕事に。</p>
+      <h1 style="position:relative;margin:clamp(18px,2.2vw,26px) 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;line-height:1.4;letter-spacing:.08em;color:#3B3434">
+        <span style="display:block;font-size:clamp(19px,2.5vw,29px);letter-spacing:.13em">副業・在宅ワークの</span>
+        <span style="display:block;margin-top:.2em;font-size:clamp(34px,4.8vw,58px);font-weight:600;letter-spacing:.09em">第一歩<span style="font-size:.6em;letter-spacing:.06em">を、</span><span style="font-family:'Cormorant Garamond',serif;font-size:.34em;color:rgba(238,124,155,.5);letter-spacing:.02em;vertical-align:.55em;padding-left:.5em">✿</span></span>
+        <span style="display:block;margin-top:.08em;font-family:'Cormorant Garamond',serif;font-size:clamp(43px,6.1vw,74px);font-weight:500;color:#EE7C9B;letter-spacing:.015em;line-height:1.08">Instagram<span style="font-family:'Shippori Mincho B1',serif;font-size:.44em;color:#3B3434;letter-spacing:.06em">から。</span></span>
+      </h1>
+      <p style="margin:clamp(20px,2.3vw,28px) 0 0;display:inline-block;background:rgba(255,255,255,.72);padding:11px 22px;font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.75vw,20px);letter-spacing:.15em;color:#4A4242">AI × Canva <span style="color:#EE7C9B">無料</span>Instagram講座</p>
+      <p style="margin:14px 0 0;font-size:clamp(13.5px,1.5vw,15.5px);line-height:2;color:#5E5555">ChatGPTとCanvaを使って、<br>Instagram投稿を<span style="color:#D2708D;font-weight:700">ゼロから作れる</span>ように。</p>
+      <div style="margin:clamp(24px,2.8vw,34px) 0 0;max-width:440px;display:flex;align-items:flex-start">
+        <div style="flex:1;padding-right:14px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;font-weight:500;letter-spacing:.3em;color:#E3A0B2">BEGINNER</p>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(14.5px,1.6vw,16px);letter-spacing:.06em;color:#4A3F3F">未経験OK</p>
+        </div>
+        <div style="width:1px;height:38px;background:rgba(214,150,165,.32)"></div>
+        <div style="flex:1;padding:0 14px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;font-weight:500;letter-spacing:.3em;color:#E3A0B2">FREE</p>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(14.5px,1.6vw,16px);letter-spacing:.06em;color:#4A3F3F">完全無料</p>
+        </div>
+        <div style="width:1px;height:38px;background:rgba(214,150,165,.32)"></div>
+        <div style="flex:1;padding-left:14px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;font-weight:500;letter-spacing:.3em;color:#E3A0B2">SUPPORT</p>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(14.5px,1.6vw,16px);letter-spacing:.06em;color:#4A3F3F">質問し放題</p>
+        </div>
+      </div>
+      <div style="margin:clamp(22px,2.6vw,32px) 0 0;max-width:430px;display:flex;flex-direction:column;gap:9px">
+        <p style="margin:0 0 0 6px;display:flex;align-items:center;gap:7px;font-family:'Yusei Magic',cursive;font-size:14px;color:#D2708D">かんたん30秒。まずはLINEから<span style="flex:1;height:1px;background:rgba(238,124,155,.35)"></span><span style="color:#EEA6B8">✧</span></p>
+        <a href="#apply" style="display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:64px;padding:0 26px;background:#06C755;color:#fff;font-size:clamp(15px,1.7vw,17px);font-weight:700;letter-spacing:.14em;text-decoration:none;border-radius:999px;box-shadow:0 8px 18px rgba(6,199,85,.24)" style-hover="background:#05B24C;box-shadow:0 10px 22px rgba(6,199,85,.3)"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="flex:none"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg>LINEから30秒で無料申し込み<span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400">›</span></a>
+        <p style="margin:2px 0 0;font-size:11.5px;letter-spacing:.08em;color:#9A8B8B">参加費0円｜未経験OK｜質問し放題</p>
+      </div>
+    </div>
+    <div style="position:relative;min-height:clamp(340px,50vw,700px);align-self:stretch;margin-left:clamp(-200px,-9vw,0px);z-index:1">
+      <img src="img/fv-laptop.png" alt="自宅のダイニングでノートパソコンに向かう女性" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 44%;-webkit-mask-image:linear-gradient(96deg,transparent 0%,rgba(0,0,0,.16) 15%,rgba(0,0,0,.6) 31%,#000 50%);mask-image:linear-gradient(96deg,transparent 0%,rgba(0,0,0,.16) 15%,rgba(0,0,0,.6) 31%,#000 50%)">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,249,246,.22) 0%,transparent 22%,transparent 74%,rgba(250,231,232,.32) 100%);pointer-events:none"></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 メディア掲載" style="padding:clamp(56px,7vw,104px) 24px;background:#FFFCFA">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.36em;color:#C08D9B">MEDIA</p>
+    <h2 style="margin:16px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(17px,2.1vw,24px);line-height:1.85;letter-spacing:.07em">運営会社・サービスの取り組みが<br>各種メディアで紹介されています</h2>
+    <div style="margin:clamp(28px,3.4vw,42px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(18px,3vw,42px);padding:22px 0;border-top:1px solid rgba(214,150,165,.28);border-bottom:1px solid rgba(214,150,165,.28)">
+      <span style="font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.9vw,19px);letter-spacing:.12em;color:#4A4242">産経新聞</span>
+      <span style="width:1px;height:18px;background:rgba(214,150,165,.35)"></span>
+      <span style="font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.9vw,19px);letter-spacing:.12em;color:#4A4242">日テレNEWS24</span>
+      <span style="width:1px;height:18px;background:rgba(214,150,165,.35)"></span>
+      <span style="font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.9vw,19px);letter-spacing:.12em;color:#4A4242">Yahoo!ニュース</span>
+    </div>
+    <p style="margin:24px auto 0;max-width:660px;font-size:14px;line-height:2.1;color:#6B6060">当社は、これまで教育・スクール事業などを通して、新しいスキルを身につけたい方の学びをサポートしてきました。運営会社・サービスの取り組みは、新聞やニュースメディアにも取り上げられています。</p>
+  </div>
+</section>
+
+<section data-screen-label="03 仕事の選択肢" style="padding:clamp(58px,6.6vw,108px) 24px;background:#FAF3EE">
+  <div style="max-width:1120px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.36em;color:#C08D9B">WORK STYLE</p>
+      <h2 style="margin:clamp(16px,2vw,24px) 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(20px,2.8vw,32px);line-height:1.7;letter-spacing:.05em">Instagram投稿づくりで身につくのは、<br><span style="color:#EE7C9B;font-weight:600">デザインだけ</span>ではありません。</h2>
+      <p style="margin:clamp(14px,1.8vw,22px) auto 0;max-width:640px;font-size:14.5px;line-height:2.1;color:#6B6060">企画・文章・デザイン・運用。<br>投稿をひとつ作る中で、仕事にもつながるスキルを身につけていきます。</p>
+    </div>
+
+    <div data-sp-flow style="margin:clamp(24px,3vw,42px) auto 0;max-width:1000px;background:#FEFBF8;border:1px solid rgba(214,150,165,.32);border-radius:18px;padding:clamp(24px,3.2vw,38px) clamp(18px,2.4vw,32px);display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center">
+      <div style="flex:1 1 130px;text-align:center;padding:0 4px">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">01</p>
+        <p style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:500;letter-spacing:.16em;color:#4A3F3F">IDEA</p>
+        <p style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.08em;color:#5E5555">企画する力</p>
+      </div>
+      <p style="flex:0 0 auto;margin:30px 0 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 130px;text-align:center;padding:0 4px">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">02</p>
+        <p style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:500;letter-spacing:.16em;color:#4A3F3F">WRITING</p>
+        <p style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.08em;color:#5E5555">伝える力</p>
+      </div>
+      <p style="flex:0 0 auto;margin:30px 0 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 130px;text-align:center;padding:0 4px">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">03</p>
+        <p style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:500;letter-spacing:.16em;color:#4A3F3F">DESIGN</p>
+        <p style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.08em;color:#5E5555">形にする力</p>
+      </div>
+      <p style="flex:0 0 auto;margin:30px 0 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 130px;text-align:center;padding:0 4px">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">04</p>
+        <p style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:500;letter-spacing:.16em;color:#4A3F3F">MANAGEMENT</p>
+        <p style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.08em;color:#5E5555">運用する力</p>
+      </div>
+    </div>
+
+    <div style="margin:clamp(18px,2.2vw,28px) auto 0;max-width:720px;text-align:center">
+      <p style="margin:0;font-size:14px;line-height:2;color:#6B6060">このスキルは、Instagramだけで終わりません。</p>
+      <span style="display:block;width:1px;height:clamp(20px,2.4vw,32px);margin:12px auto;background:linear-gradient(rgba(214,150,165,.55),rgba(214,150,165,0))"></span>
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16.5px,2vw,22px);line-height:1.85;letter-spacing:.05em">投稿制作・SNS運用・在宅ワークなど、<br><span style="color:#EE7C9B">「仕事に使えるスキル」</span>へ。</p>
+    </div>
+
+    <div style="margin:clamp(34px,4.2vw,62px) auto 0;text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.32em;color:#C08D9B">3 WORK STYLES</p>
+      <p style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(16px,2vw,21px);line-height:1.85;letter-spacing:.06em">たとえば、こんな働き方があります。</p>
+      <span style="display:block;width:1px;height:clamp(22px,2.6vw,36px);margin:clamp(14px,1.8vw,22px) auto 0;background:linear-gradient(rgba(214,150,165,.55),rgba(214,150,165,0))"></span>
+    </div>
+
+    <div style="margin:clamp(22px,2.6vw,32px) 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(22px,3vw,44px);align-items:center">
+      <div style="position:relative">
+        <img src="img/phone.png" alt="スマートフォンで自分のInstagramを更新する女性" style="display:block;width:100%;aspect-ratio:5/4;object-fit:cover;object-position:60% 50%;border-radius:4px">
+      </div>
+      <div>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,48px);font-weight:300;line-height:1;color:#EEA6B8">01</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(19px,2.3vw,26px);line-height:1.7;letter-spacing:.06em">自分のInstagramを育てる</h3>
+        <p style="margin:14px 0 0;font-size:15px;font-weight:700;line-height:1.95;color:#4A4242">好きなことや得意なことを発信して、自分のアカウントを収益につなげる。</p>
+        <p style="margin:10px 0 0;font-size:14px;line-height:2.05;color:#6B6060">美容、料理、子育て、旅行、ファッション、暮らし。自分の好きなことや経験をInstagramで発信し、アカウントが育っていけば、収益化を目指すこともできます。</p>
+        <div style="margin:18px 0 0;padding-top:12px;border-top:1px solid rgba(214,150,165,.28)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#C08D9B">WHAT YOU DO</p>
+          <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14.5px;line-height:1.9;letter-spacing:.04em;color:#4A3F3F">アフィリエイト　/　企業の商品・サービスのPR　/　自分の商品やサービスの販売</p>
+        </div>
+        <sc-if value="{{ showEarnings }}" hint-placeholder-val="{{ true }}">
+        <div style="margin:18px 0 0;padding-left:18px;border-left:2px solid #F6C9D5">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#C08D9B">WORK EXAMPLE<span style="font-family:'Shippori Mincho B1',serif;font-size:11.5px;letter-spacing:.06em;color:#8A7E7E">　収益・案件イメージ</span></p>
+          <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:16px;line-height:1.85;letter-spacing:.04em">アフィリエイト・PRなど<br><span style="color:#D2708D">月数千円〜数万円以上</span>を目指すことも。</p>
+          <p style="margin:7px 0 0;font-size:11.5px;color:#948A8A">※成果や収益を保証するものではありません。</p>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="margin:clamp(26px,3.2vw,44px) 0 0;padding-top:clamp(26px,3.2vw,44px);border-top:1px solid rgba(214,150,165,.24);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(22px,3vw,44px);align-items:center">
+      <div>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,48px);font-weight:300;line-height:1;color:#EEA6B8">02</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(19px,2.3vw,26px);line-height:1.7;letter-spacing:.06em">企業やお店のInstagramをお手伝いする</h3>
+        <p style="margin:14px 0 0;font-size:15px;font-weight:700;line-height:1.95;color:#4A4242">Instagramを更新したい企業やお店に代わって、アカウント運用をサポート。</p>
+        <p style="margin:10px 0 0;font-size:14px;line-height:2.05;color:#6B6060">「Instagramをやりたいけど時間がない」「何を投稿したらいいか分からない」と悩む企業やお店をお手伝いします。美容室、飲食店、サロン、ECショップ、スクールなど、さまざまな業種で活かせます。</p>
+        <div style="margin:18px 0 0;padding-top:12px;border-top:1px solid rgba(214,150,165,.28)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#C08D9B">WHAT YOU DO</p>
+          <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14.5px;line-height:1.9;letter-spacing:.04em;color:#4A3F3F">企画　/　投稿画像制作　/　キャプション　/　投稿　/　運用サポート</p>
+        </div>
+        <sc-if value="{{ showEarnings }}" hint-placeholder-val="{{ true }}">
+        <div style="margin:18px 0 0;padding-left:18px;border-left:2px solid #F6C9D5">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#C08D9B">WORK EXAMPLE<span style="font-family:'Shippori Mincho B1',serif;font-size:11.5px;letter-spacing:.06em;color:#8A7E7E">　収益・案件イメージ</span></p>
+          <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:16px;line-height:1.85;letter-spacing:.04em">Instagram運用サポート<br><span style="color:#D2708D">月3万円〜10万円程度</span> / 1アカウント</p>
+          <p style="margin:7px 0 0;font-size:13.5px;line-height:1.85;color:#6B6060">たとえば、<span style="color:#D2708D;font-weight:700">月5万円 × 3社 ＝ 月15万円</span></p>
+          <p style="margin:7px 0 0;font-size:11.5px;color:#948A8A">※成果や収益を保証するものではありません。</p>
+        </div>
+        </sc-if>
+      </div>
+      <div>
+        <img src="img/phone-laptop.png" alt="パソコンとスマートフォンでアカウント運用をする女性" style="display:block;width:100%;aspect-ratio:5/4;object-fit:cover;object-position:55% 50%;border-radius:4px">
+      </div>
+    </div>
+
+    <div style="margin:clamp(26px,3.2vw,44px) 0 0;padding-top:clamp(26px,3.2vw,44px);border-top:1px solid rgba(214,150,165,.24);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(22px,3vw,44px);align-items:center">
+      <div>
+        <img src="img/typing.png" alt="ノートパソコンでInstagram投稿画像を制作する女性" style="display:block;width:100%;aspect-ratio:5/4;object-fit:cover;object-position:55% 50%;border-radius:4px">
+      </div>
+      <div>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,48px);font-weight:300;line-height:1;color:#EEA6B8">03</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(19px,2.3vw,26px);line-height:1.7;letter-spacing:.06em">Instagramの投稿画像を作る</h3>
+        <p style="margin:14px 0 0;font-size:15px;font-weight:700;line-height:1.95;color:#4A4242">まずは「投稿を作る」仕事から始めることもできます。</p>
+        <p style="margin:10px 0 0;font-size:14px;line-height:2.05;color:#6B6060">いきなりInstagram全体を運用するのは、少しハードルが高い。依頼されたテーマなどをもとに投稿画像を作る仕事から始めて、慣れてきたらInstagram運用へ。少しずつ仕事の幅を広げることもできます。</p>
+        <div style="margin:18px 0 0;padding-top:12px;border-top:1px solid rgba(214,150,165,.28)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#C08D9B">WHAT YOU DO</p>
+          <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14.5px;line-height:1.9;letter-spacing:.04em;color:#4A3F3F">テーマの確認　/　ChatGPTで内容・デザイン案　/　Canvaで投稿制作</p>
+        </div>
+        <sc-if value="{{ showEarnings }}" hint-placeholder-val="{{ true }}">
+        <div style="margin:18px 0 0;padding-left:18px;border-left:2px solid #F6C9D5">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#C08D9B">WORK EXAMPLE<span style="font-family:'Shippori Mincho B1',serif;font-size:11.5px;letter-spacing:.06em;color:#8A7E7E">　収益・案件イメージ</span></p>
+          <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:16px;line-height:1.85;letter-spacing:.04em">Instagram投稿制作<br>1投稿 <span style="color:#D2708D">1,000円〜5,000円程度</span></p>
+          <p style="margin:7px 0 0;font-size:13.5px;line-height:1.85;color:#6B6060">たとえば、<span style="color:#D2708D;font-weight:700">1投稿3,000円 × 月30投稿 ＝ 月9万円</span></p>
+          <p style="margin:7px 0 0;font-size:11.5px;color:#948A8A">※成果や収益を保証するものではありません。</p>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="margin:clamp(28px,3.4vw,46px) auto 0;max-width:760px;padding-top:clamp(24px,3vw,36px);border-top:1px solid rgba(214,150,165,.24);text-align:center">
+      <p style="margin:0;font-family:'Yusei Magic',cursive;font-size:clamp(16px,2vw,20px);color:#D2708D">どれかひとつから始めればOK。</p>
+      <p style="margin:12px 0 0;font-size:14.5px;line-height:2.1;color:#5E5555">Instagramのスキルが身につけば、副業や在宅ワークに挑戦するための新しい選択肢が生まれます。</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 初心者の不安" style="position:relative;padding:clamp(52px,6vw,96px) 24px;background:#FDF1F1">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:clamp(24px,3.4vw,48px);align-items:center">
+      <div>
+        <h2 style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(17px,2.1vw,25px);line-height:1.7;letter-spacing:.03em"><span style="white-space:nowrap">「やってみたい。</span><span style="white-space:nowrap">でも、<span style="color:#EE7C9B">私にできるかな？</span>」</span></h2>
+        <p style="margin:12px 0 0;font-family:'Yusei Magic',cursive;font-size:15.5px;color:#D2708D">そんな不安があっても大丈夫です。</p>
+        <div style="margin:20px 0 0;padding:14px 0 2px;border-top:1px solid rgba(214,150,165,.3);border-bottom:1px solid rgba(214,150,165,.3)">
+          <p style="margin:0 0 10px;font-size:14.5px;line-height:1.85;color:#5E5555">副業には興味があるけれど、<strong style="color:#3B3434">「何から始めればいいのか分からない」</strong></p>
+          <p style="margin:0 0 10px;font-size:14.5px;line-height:1.85;color:#5E5555">Instagramはいつも見ているけれど、<strong style="color:#3B3434">「自分で投稿なんて作ったことがない」</strong></p>
+          <p style="margin:0 0 10px;font-size:14.5px;line-height:1.85;color:#5E5555">CanvaもChatGPTも気になるけれど、<strong style="color:#3B3434">「使いこなせる自信がない」</strong></p>
+          <p style="margin:0 0 12px;font-size:14.5px;line-height:1.85;color:#5E5555">そして何より、<strong style="color:#3B3434">「デザインセンスがないから無理かも……」</strong></p>
+        </div>
+        <p style="margin:16px 0 0;font-size:14px;line-height:2;color:#6B6060">そう感じている方も多いと思います。でも、最初から全部できる必要はありません。なぜなら今は、</p>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(15.5px,1.9vw,22px);line-height:1.75;letter-spacing:.03em"><span style="white-space:nowrap">なぜなら、AIがあなたの<span style="background:linear-gradient(transparent 64%,#F9D2DB 64%)">「苦手」</span>を</span><span style="white-space:nowrap">手伝ってくれるからです。</span></p>
+      </div>
+      <div>
+        <img src="img/worried.png" alt="パソコンの前で少し悩んでいる女性" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:60% 46%;border-radius:4px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 ChatGPT×Canva" style="padding:clamp(52px,6vw,100px) 24px;background:#FFFCFA">
+  <div style="max-width:880px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.36em;color:#C08D9B">AI × CANVA</p>
+      <h2 style="margin:16px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(21px,3vw,34px);line-height:1.8;letter-spacing:.06em">文章も、アイデアも、デザインも。<br><span style="color:#EE7C9B">AIと一緒</span>なら始めやすい。</h2>
+      <p style="margin:16px auto 0;max-width:600px;font-size:14px;line-height:2.05;color:#6B6060">デザイン経験がなくても大丈夫。<br>ChatGPTとCanvaを使って、投稿づくりを3ステップで進めます。</p>
+    </div>
+
+    <div data-sp-flow style="margin:clamp(28px,3.4vw,48px) auto 0;max-width:820px;display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center">
+      <div style="flex:1 1 200px;padding:16px 12px 0 0;border-top:1px solid rgba(214,150,165,.38)">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.4vw,40px);font-weight:300;line-height:1;color:#EEA6B8">01</p>
+          <img src="img/logo-chatgpt.webp" alt="ChatGPT" style="width:24px;height:24px;border-radius:7px;opacity:.85">
+        </div>
+        <p style="margin:12px 0 0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C08D9B">THINK</p>
+        <h3 style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16px,1.9vw,19px);line-height:1.7;letter-spacing:.05em">ChatGPTと一緒に考える</h3>
+        <p style="margin:10px 0 0;font-size:13.5px;line-height:2;color:#6B6060">投稿テーマや文章、構成、デザイン案までAIに相談。</p>
+        <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;line-height:1.85;letter-spacing:.04em;color:#4A3F3F">テーマ / 文章 / 構成 / デザイン案</p>
+      </div>
+      <p style="flex:0 0 auto;margin:34px 10px 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 200px;padding:16px 12px 0 0;border-top:1px solid rgba(214,150,165,.38)">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.4vw,40px);font-weight:300;line-height:1;color:#EEA6B8">02</p>
+          <img src="img/logo-canva.webp" alt="Canva" style="width:24px;height:24px;border-radius:50%;opacity:.85">
+        </div>
+        <p style="margin:12px 0 0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C08D9B">CREATE</p>
+        <h3 style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16px,1.9vw,19px);line-height:1.7;letter-spacing:.05em">Canvaで形にする</h3>
+        <p style="margin:10px 0 0;font-size:13.5px;line-height:2;color:#6B6060">AIと考えた内容をもとに、Canvaで投稿画像に仕上げる。</p>
+      </div>
+      <p style="flex:0 0 auto;margin:34px 10px 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 200px;padding:16px 0 0;border-top:1px solid rgba(238,124,155,.55)">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.4vw,40px);font-weight:400;line-height:1;color:#EE7C9B">03</p>
+          <img src="img/logo-instagram.jpeg" alt="Instagram" style="width:24px;height:24px;border-radius:7px;opacity:.85">
+        </div>
+        <p style="margin:12px 0 0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#D2708D">COMPLETE</p>
+        <h3 style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16px,1.9vw,19px);line-height:1.7;letter-spacing:.05em;color:#D2708D">Instagram投稿が完成</h3>
+        <p style="margin:10px 0 0;font-size:13.5px;line-height:2;color:#6B6060">文章とデザインを組み合わせれば、投稿できる画像が完成。</p>
+      </div>
+    </div>
+
+    <div style="margin:clamp(30px,3.6vw,52px) auto 0;max-width:660px;text-align:center">
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(17px,2.1vw,25px);line-height:1.8;letter-spacing:.05em">未経験でも、デザインに自信がなくても<span style="color:#EE7C9B">大丈夫</span>。</p>
+      <p style="margin:14px 0 0;font-size:14.5px;line-height:2.1;color:#5E5555">AIが一緒に考えてくれるから、Instagram投稿はゼロから作れます。</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="06 投稿作例" style="padding:clamp(48px,5.4vw,88px) 24px;background:#FDF1F1">
+  <div style="max-width:1120px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(22px,2.6vw,34px)">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.36em;color:#C08D9B">WORKS</p>
+      <h2 style="margin:16px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(21px,3vw,34px);line-height:1.8;letter-spacing:.06em">はじめてでも、<br>こんなInstagram投稿が作れるように。</h2>
+    </div>
+    <div data-sp-carousel style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(16px,2vw,24px);align-items:start">
+      <div>
+        <image-slot id="post-beauty" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="美容・コスメ｜フィード投稿"></image-slot>
+        <div style="margin-top:11px;padding-top:10px;border-top:1px solid rgba(214,150,165,.3)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#C08D9B">BEAUTY</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.05em">美容・コスメ</p>
+        </div>
+      </div>
+      <div>
+        <image-slot id="post-sidejob" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="ノウハウ・副業系｜フィード投稿"></image-slot>
+        <div style="margin-top:11px;padding-top:10px;border-top:1px solid rgba(214,150,165,.3)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#C08D9B">KNOW-HOW</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.05em">ノウハウ・副業</p>
+        </div>
+      </div>
+      <div>
+        <image-slot id="post-life" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="暮らし・ライフスタイル｜フィード投稿"></image-slot>
+        <div style="margin-top:11px;padding-top:10px;border-top:1px solid rgba(214,150,165,.3)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#6FA894">LIFE</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:14px;letter-spacing:.05em">暮らし・ライフスタイル</p>
+        </div>
+      </div>
+    </div>
+    <div data-sp-carousel style="margin:clamp(16px,2vw,24px) 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(14px,1.8vw,22px);align-items:start">
+      <div>
+        <image-slot id="post-cafe" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="グルメ・カフェ｜フィード投稿"></image-slot>
+        <div style="margin-top:10px;padding-top:9px;border-top:1px solid rgba(214,150,165,.26)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.26em;color:#BFA083">GOURMET</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.05em">カフェ・グルメ</p>
+        </div>
+      </div>
+      <div>
+        <image-slot id="post-kids" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="子育て｜フィード投稿"></image-slot>
+        <div style="margin-top:10px;padding-top:9px;border-top:1px solid rgba(214,150,165,.26)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.26em;color:#7FA8C4">CHILDCARE</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.05em">子育て</p>
+        </div>
+      </div>
+      <div>
+        <image-slot id="post-salon" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="店舗・サロン｜フィード投稿"></image-slot>
+        <div style="margin-top:10px;padding-top:9px;border-top:1px solid rgba(214,150,165,.26)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.26em;color:#D2708D">SHOP</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.05em">お店・サロン</p>
+        </div>
+      </div>
+      <div>
+        <image-slot id="post-ec" style="width:100%;aspect-ratio:1/1" shape="rounded" radius="3" placeholder="商品紹介・EC｜フィード投稿"></image-slot>
+        <div style="margin-top:10px;padding-top:9px;border-top:1px solid rgba(214,150,165,.26)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.26em;color:#B39B7C">PRODUCT</p>
+          <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:13px;letter-spacing:.05em">商品紹介・EC</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin:clamp(22px,2.6vw,34px) auto 0;max-width:640px;text-align:center;font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.8vw,19px);line-height:1.95;letter-spacing:.05em">あなたの「好き」や得意なテーマも、<br>Instagram投稿として形にできるようになります。</p>
+  </div>
+</section>
+
+<section data-screen-label="07 BEFORE AFTER" style="padding:clamp(48px,5.4vw,92px) 24px;background:#FFFCFA">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.34em;color:#C08D9B">BEFORE / AFTER</p>
+      <h2 style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(20px,2.8vw,32px);line-height:1.75;letter-spacing:.06em">「何もできない」から、<br><span style="color:#EE7C9B">「ひとつ作れた」</span>へ。</h2>
+    </div>
+    <div data-sp-flow style="margin:clamp(24px,3vw,40px) 0 0;display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:clamp(12px,1.6vw,20px)">
+      <div style="flex:1 1 300px;background:#FBF7F2;border:1px solid rgba(180,164,145,.3);border-radius:6px;padding:clamp(22px,2.6vw,32px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.32em;color:#B3A491">BEFORE</p>
+        <p style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(16px,1.9vw,19px);line-height:1.8;letter-spacing:.05em;color:#6E655B">興味はある。でも、<br>何から始めればいい？</p>
+        <div style="margin:18px 0 0">
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(180,164,145,.28);font-size:14px;color:#7A7168">特別なスキルがない</p>
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(180,164,145,.28);font-size:14px;color:#7A7168">文章を書くのが苦手</p>
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(180,164,145,.28);font-size:14px;color:#7A7168">デザインに自信がない</p>
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(180,164,145,.28);font-size:14px;color:#7A7168">AIも使ったことがない</p>
+        </div>
+      </div>
+      <p style="flex:0 0 auto;align-self:center;margin:0;font-family:'Cormorant Garamond',serif;font-size:20px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 300px;background:#FDF2F3;border:1px solid rgba(214,150,165,.38);border-radius:6px;padding:clamp(22px,2.6vw,32px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.32em;color:#D2708D">AFTER</p>
+        <p style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16px,1.9vw,19px);line-height:1.8;letter-spacing:.05em">AIと一緒なら、<br>Instagram投稿を形にできる。</p>
+        <div style="margin:18px 0 0">
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(214,150,165,.3);font-size:14px;color:#4A4242">投稿のアイデアを考えられる</p>
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(214,150,165,.3);font-size:14px;color:#4A4242">文章・構成を作れる</p>
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(214,150,165,.3);font-size:14px;color:#4A4242">デザイン案も考えられる</p>
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(214,150,165,.3);font-size:14px;color:#4A4242">Canvaで投稿画像に仕上げられる</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin:clamp(24px,3vw,40px) auto 0;max-width:660px;text-align:center">
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16.5px,2vw,22px);line-height:1.85;letter-spacing:.05em">まずは、<span style="color:#EE7C9B">「ひとつ作れた」</span>という経験から。</p>
+      <p style="margin:12px 0 0;font-size:14.5px;line-height:2.1;color:#5E5555">その一歩が、副業・在宅ワークへの第一歩になります。</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="09 カリキュラム" style="padding:clamp(44px,4.8vw,76px) 24px;background:#FBF7F3">
+  <div style="max-width:980px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(20px,2.4vw,30px)">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.36em;color:#C08D9B">CURRICULUM</p>
+      <h2 style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(20px,2.7vw,30px);line-height:1.75;letter-spacing:.06em">無料講座では、こんなことを学びます</h2>
+      <p style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(14px,1.6vw,17px);letter-spacing:.06em;color:#5E5555">全<span style="color:#EE7C9B">5STEP</span>で、Instagram投稿の作り方を学びます。</p>
+    </div>
+    <div data-sp-carousel style="display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(14px,1.8vw,22px)">
+      <div style="flex:1 1 260px;background:#fff;border:1px solid rgba(214,150,165,.25);border-radius:6px;padding:clamp(18px,2.2vw,26px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C08D9B">STEP 01</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16.5px;line-height:1.6;letter-spacing:.05em">Instagramの基本を知る</h3>
+        <p style="margin:9px 0 0;font-size:13.5px;line-height:1.95;color:#6B6060">どんな投稿があるのか、企業やお店はどう活用しているのか。まずは基本から。</p>
+      </div>
+      <div style="flex:1 1 260px;background:#fff;border:1px solid rgba(214,150,165,.25);border-radius:6px;padding:clamp(18px,2.2vw,26px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C08D9B">STEP 02</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16.5px;line-height:1.6;letter-spacing:.05em">AIで投稿のアイデアを考える</h3>
+        <p style="margin:9px 0 0;font-size:13.5px;line-height:1.95;color:#6B6060">ChatGPTを使って、投稿テーマやアイデアを考える方法を学びます。</p>
+      </div>
+      <div style="flex:1 1 260px;background:#fff;border:1px solid rgba(214,150,165,.25);border-radius:6px;padding:clamp(18px,2.2vw,26px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C08D9B">STEP 03</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16.5px;line-height:1.6;letter-spacing:.05em">AIで文章・構成を作る</h3>
+        <p style="margin:9px 0 0;font-size:13.5px;line-height:1.95;color:#6B6060">タイトル、投稿文章、複数枚の投稿構成などをAIと一緒に作ります。</p>
+      </div>
+      <div style="flex:1 1 260px;background:#fff;border:1px solid rgba(214,150,165,.25);border-radius:6px;padding:clamp(18px,2.2vw,26px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#C08D9B">STEP 04</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16.5px;line-height:1.6;letter-spacing:.05em">AIでデザインを考える</h3>
+        <p style="margin:9px 0 0;font-size:13.5px;line-height:1.95;color:#6B6060">配色、フォント、写真の配置、レイアウトまでAIと一緒に考えます。</p>
+      </div>
+      <div style="flex:1 1 260px;background:#FDF2F3;border:1px solid rgba(214,150,165,.4);border-radius:6px;padding:clamp(18px,2.2vw,26px)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#D2708D">STEP 05</p>
+        <h3 style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16.5px;line-height:1.6;letter-spacing:.05em;color:#D2708D">Canvaで投稿を完成させる</h3>
+        <p style="margin:9px 0 0;font-size:13.5px;line-height:1.95;color:#6B6060">AIが考えたデザイン案をもとに、Canvaで実際のInstagram投稿を制作します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="10 サポート" style="padding:clamp(44px,4.8vw,80px) 24px;background:#EFF6F3">
+  <div style="max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(22px,3vw,46px)">
+    <div style="flex:1 1 280px">
+      <img src="img/two-women.png" alt="パソコンを見ながら一緒に作業する女性2人" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px">
+    </div>
+    <div style="flex:1.45 1 340px">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.34em;color:#5A9C89">SUPPORT</p>
+      <h2 style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(19px,2.5vw,28px);line-height:1.7;letter-spacing:.05em">ひとりで頑張らなくても、大丈夫。</h2>
+      <p style="margin:12px 0 0;font-size:14px;line-height:2.05;color:#5E5555">未経験だからこそ、分からないことが出てくるのは当たり前。<br>専任のプロが「作れる」まで一緒にサポートします。</p>
+      <div style="margin:20px 0 0">
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:14px;padding:13px 0;border-top:1px solid rgba(90,156,137,.28)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#8CBFAE">01</p>
+          <div>
+            <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;letter-spacing:.05em">専任のプロがサポート</p>
+            <p style="margin:6px 0 0;font-size:13.5px;line-height:1.9;color:#6B6060">途中で手が止まっても、相談しながら進められます。</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:14px;padding:13px 0;border-top:1px solid rgba(90,156,137,.28)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#8CBFAE">02</p>
+          <div>
+            <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;letter-spacing:.05em">分からないことは何度でも質問OK</p>
+            <p style="margin:6px 0 0;font-size:13.5px;line-height:1.9;color:#6B6060">ChatGPT・Canva・投稿づくりまで気軽に質問できます。</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:14px;padding:13px 0;border-top:1px solid rgba(90,156,137,.28);border-bottom:1px solid rgba(90,156,137,.28)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#8CBFAE">03</p>
+          <div>
+            <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;letter-spacing:.05em">「分かった」で終わらず実践</p>
+            <p style="margin:6px 0 0;font-size:13.5px;line-height:1.9;color:#6B6060">実際に手を動かし、自分で投稿を作れるところまで進めます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="11 ロードマップ" style="padding:clamp(40px,4.4vw,72px) 24px;background:#FBF5F1">
+  <div style="max-width:1060px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(20px,2.4vw,30px)">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.34em;color:#C08D9B">ROADMAP</p>
+      <h2 style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(19px,2.6vw,29px);line-height:1.75;letter-spacing:.06em">作れるようになったら、次は<span style="color:#EE7C9B">仕事にチャレンジ</span>。</h2>
+      <p style="margin:12px 0 0;font-size:14px;line-height:2;color:#6B6060">いきなり大きな仕事を目指さなくても大丈夫。できることを、ひとつずつ。</p>
+    </div>
+    <div data-sp-tl style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center">
+      <div style="flex:1 1 140px;text-align:center;padding:16px 6px 0;border-top:1px solid rgba(214,150,165,.4)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">01</p>
+        <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16px;letter-spacing:.06em">学ぶ</p>
+        <p style="margin:7px 0 0;font-size:12.5px;line-height:1.85;color:#6B6060">AI × Canvaで<br>投稿制作を学ぶ</p>
+      </div>
+      <p style="flex:0 0 auto;margin:38px 2px 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 140px;text-align:center;padding:16px 6px 0;border-top:1px solid rgba(214,150,165,.4)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">02</p>
+        <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16px;letter-spacing:.06em">作る</p>
+        <p style="margin:7px 0 0;font-size:12.5px;line-height:1.85;color:#6B6060">実際に投稿を<br>作ってみる</p>
+      </div>
+      <p style="flex:0 0 auto;margin:38px 2px 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 140px;text-align:center;padding:16px 6px 0;border-top:1px solid rgba(214,150,165,.4)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">03</p>
+        <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16px;letter-spacing:.06em">増やす</p>
+        <p style="margin:7px 0 0;font-size:12.5px;line-height:1.85;color:#6B6060">制作物を<br>少しずつ増やす</p>
+      </div>
+      <p style="flex:0 0 auto;margin:38px 2px 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 140px;text-align:center;padding:16px 6px 0;border-top:1px solid rgba(214,150,165,.4)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">04</p>
+        <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16px;letter-spacing:.06em">挑戦する</p>
+        <p style="margin:7px 0 0;font-size:12.5px;line-height:1.85;color:#6B6060">小さな仕事から<br>始めてみる</p>
+      </div>
+      <p style="flex:0 0 auto;margin:38px 2px 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 140px;text-align:center;padding:16px 6px 0;border-top:1px solid rgba(238,124,155,.6)">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#EE7C9B">05</p>
+        <p style="margin:8px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:16px;letter-spacing:.06em;color:#D2708D">広げる</p>
+        <p style="margin:7px 0 0;font-size:12.5px;line-height:1.85;color:#6B6060">投稿制作やSNS運用へ<br>仕事の幅を広げる</p>
+      </div>
+    </div>
+    <p style="margin:clamp(22px,2.6vw,34px) auto 0;max-width:720px;padding:12px 22px;background:#FDF2F3;border-radius:999px;text-align:center;font-size:13px;line-height:1.85;color:#6B6060">仕事を受けるだけでなく、自分のInstagramを育てて、PRやアフィリエイトに挑戦する道も。</p>
+  </div>
+</section>
+
+<section data-screen-label="12 無料" style="padding:clamp(52px,6vw,96px) 24px;background:#FDF1F1">
+  <div style="max-width:1040px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.34em;color:#C08D9B">FREE TO START</p>
+      <h2 style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(20px,2.8vw,31px);line-height:1.75;letter-spacing:.06em">はじめるために、<br>お金はかかりません。</h2>
+      <p style="margin:14px auto 0;max-width:620px;font-size:14px;line-height:2.05;color:#5E5555">講座も0円。使うのはChatGPTとCanvaの無料版だけ。<br>特別なソフトや経験がなくても、そのまま始められます。</p>
+    </div>
+    <div style="margin:clamp(24px,3vw,40px) 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2vw,26px)">
+      <div style="flex:1 1 250px;padding-top:16px;border-top:1px solid rgba(214,150,165,.35)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <img src="img/logo-chatgpt.webp" alt="ChatGPT" style="width:26px;height:26px;border-radius:8px">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.06em">ChatGPT</p>
+        </div>
+        <p style="margin:10px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;letter-spacing:.05em;color:#D2708D">無料版でOK</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.9;color:#6B6060">投稿テーマ・文章・構成・デザイン案を考える</p>
+      </div>
+      <div style="flex:1 1 250px;padding-top:16px;border-top:1px solid rgba(214,150,165,.35)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <img src="img/logo-canva.webp" alt="Canva" style="width:26px;height:26px;border-radius:50%">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.06em">Canva</p>
+        </div>
+        <p style="margin:10px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;letter-spacing:.05em;color:#D2708D">無料版でOK</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.9;color:#6B6060">AIと考えた内容を実際の投稿画像にする</p>
+      </div>
+      <div style="flex:1 1 250px;padding-top:16px;border-top:1px solid rgba(238,124,155,.55)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="width:26px;height:26px;border-radius:8px;background:#FBE2E7;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;color:#D2708D">03</span>
+          <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:16px;letter-spacing:.08em">講座</p>
+        </div>
+        <p style="margin:10px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;letter-spacing:.05em;color:#D2708D">参加費 0円</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.9;color:#6B6060">未経験から実際に投稿を1つ完成させる</p>
+      </div>
+    </div>
+    <p style="margin:clamp(18px,2.2vw,26px) auto 0;text-align:center;font-size:12.5px;letter-spacing:.06em;color:#8A7E7E">高額なデザインソフト　不要　／　デザイン経験　不要　／　AIの知識　不要</p>
+    <div style="margin:clamp(26px,3.2vw,42px) auto 0;max-width:560px;text-align:center">
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(16.5px,2vw,22px);line-height:1.85;letter-spacing:.05em">特別な準備はいりません。<br>今日から、Instagram投稿づくりを始められます。</p>
+      <a href="#apply" style="margin:22px auto 0;display:flex;align-items:center;justify-content:center;gap:12px;width:min(360px,100%);min-height:60px;padding:0 24px;background:#06C755;color:#fff;font-size:15.5px;font-weight:700;letter-spacing:.12em;text-decoration:none;border-radius:999px;box-shadow:0 8px 18px rgba(6,199,85,.24)" style-hover="background:#05B24C;box-shadow:0 10px 22px rgba(6,199,85,.3)"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="flex:none"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg>LINEで無料申し込み<span style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400">›</span></a>
+      <p style="margin:12px 0 0;font-size:12px;letter-spacing:.06em;color:#8A7E7E">参加費0円｜ChatGPT・Canva無料版でOK</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="13 おすすめの人" style="padding:clamp(48px,5.4vw,88px) 24px;background:#FFFCFA">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(22px,2.6vw,34px)">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.34em;color:#C08D9B">FOR YOU</p>
+      <h2 style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(19px,2.6vw,29px);line-height:1.75;letter-spacing:.06em">ひとつでも当てはまったら、<br>この講座がおすすめです。</h2>
+      <p style="margin:12px 0 0;font-family:'Yusei Magic',cursive;font-size:15px;color:#D2708D">「ちょっとやってみたい」からで大丈夫。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <div style="background:#fff;border:1px solid rgba(214,150,165,.3);border-radius:14px;padding:22px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E79BAF" stroke-width="1.1" stroke-linecap="round"><rect x="3" y="7" width="18" height="11" rx="2"></rect><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"></path></svg>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;line-height:1.7;letter-spacing:.04em">副業を始めてみたい</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.85;color:#6B6060">でも、何から始めればいいか分からない</p>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(214,150,165,.3);border-radius:14px;padding:22px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E79BAF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 5l8 6"></path><path d="M6 11v8h12v-8"></path></svg>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;line-height:1.7;letter-spacing:.04em">在宅でできる仕事に興味がある</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.85;color:#6B6060">自分に合った働き方を見つけたい</p>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(214,150,165,.3);border-radius:14px;padding:22px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E79BAF" stroke-width="1.1" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17" cy="7" r=".9"></circle></svg>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;line-height:1.7;letter-spacing:.04em">InstagramやSNSが好き</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.85;color:#6B6060">好きをスキルにつなげてみたい</p>
+      </div>
+      <div style="background:#FEF7F8;border:1px solid rgba(214,150,165,.3);border-radius:14px;padding:22px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E79BAF" stroke-width="1.1" stroke-linecap="round"><circle cx="12" cy="12" r="8"></circle><circle cx="9.5" cy="10" r="1"></circle><circle cx="14.5" cy="10" r="1"></circle><circle cx="12" cy="15" r="1"></circle></svg>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;line-height:1.7;letter-spacing:.04em">デザイン未経験で自信がない</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.85;color:#6B6060">センスがなくても作れるようになりたい</p>
+      </div>
+      <div style="background:#FEF7F8;border:1px solid rgba(214,150,165,.3);border-radius:14px;padding:22px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E79BAF" stroke-width="1.1" stroke-linecap="round"><path d="M12 4v6M12 14v6M4 12h6M14 12h6"></path><circle cx="12" cy="12" r="1.6"></circle></svg>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;line-height:1.7;letter-spacing:.04em">ChatGPT・AIを使ってみたい</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.85;color:#6B6060">仕事や副業に活かせる使い方を知りたい</p>
+      </div>
+      <div style="background:#FEF7F8;border:1px solid rgba(214,150,165,.3);border-radius:14px;padding:22px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E79BAF" stroke-width="1.1" stroke-linecap="round"><circle cx="9" cy="9" r="3"></circle><circle cx="16" cy="11" r="2.4"></circle><path d="M4 19c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5"></path><path d="M15 19c0-2 1.2-3.2 2.8-3.2S20.5 17 20.5 19"></path></svg>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:15.5px;line-height:1.7;letter-spacing:.04em">ひとりで始めるのは少し不安</p>
+        <p style="margin:7px 0 0;font-size:13px;line-height:1.85;color:#6B6060">サポートを受けながら学びたい</p>
+      </div>
+    </div>
+    <p style="margin:clamp(24px,3vw,38px) 0 0;text-align:center;font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.8vw,19px);line-height:1.9;letter-spacing:.05em">経験も、センスも、特別なスキルも必要ありません。<br><span style="color:#EE7C9B">「ちょっとやってみたい」</span>が、最初の一歩です。</p>
+  </div>
+</section>
+
+<section id="apply" data-screen-label="15 受講開始まで" style="padding:clamp(48px,5.4vw,88px) 24px;background:#FFFCFA">
+  <div style="max-width:1060px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(22px,2.6vw,34px)">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.34em;color:#C08D9B">START</p>
+      <h2 style="margin:12px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(19px,2.6vw,29px);line-height:1.75;letter-spacing:.06em">無料講座は、<br>かんたん<span style="color:#EE7C9B">4STEP</span>でスタート。</h2>
+      <p style="margin:12px 0 0;font-size:14px;line-height:2;color:#6B6060">LINE登録から学習開始まで、迷わず進められます。</p>
+    </div>
+    <div data-sp-tl style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:0 4px">
+      <div style="flex:1 1 190px;padding:0 4px">
+        <img src="img/phone.png" alt="スマートフォンでLINEを開く女性" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:62% 46%;border-radius:4px">
+        <div style="margin-top:12px;padding-top:11px;border-top:1px solid rgba(214,150,165,.38)">
+          <div style="display:flex;align-items:center;gap:8px">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">01</p>
+            <span style="width:15px;height:15px;border-radius:4px;background:#06C755;display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg></span>
+          </div>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:15.5px;letter-spacing:.05em">LINEに登録</p>
+          <p style="margin:6px 0 0;font-size:12.5px;line-height:1.9;color:#6B6060">まずはLINEを友だち追加。30秒ほどでかんたんに登録できます。</p>
+        </div>
+      </div>
+      <p style="flex:0 0 auto;margin:clamp(60px,9vw,90px) 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 190px;padding:0 4px">
+        <img src="img/phone-laptop.png" alt="スマートフォンで申し込みを進める女性" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:58% 50%;border-radius:4px">
+        <div style="margin-top:12px;padding-top:11px;border-top:1px solid rgba(214,150,165,.38)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">02</p>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:15.5px;letter-spacing:.05em">無料講座に申し込む</p>
+          <p style="margin:6px 0 0;font-size:12.5px;line-height:1.9;color:#6B6060">LINEから案内に沿って、必要事項を入力すれば申し込み完了。</p>
+        </div>
+      </div>
+      <p style="flex:0 0 auto;margin:clamp(60px,9vw,90px) 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 190px;padding:0 4px">
+        <img src="img/happy.png" alt="ノートパソコンでオンライン面談をする女性" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:56% 44%;border-radius:4px">
+        <div style="margin-top:12px;padding-top:11px;border-top:1px solid rgba(214,150,165,.38)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#D9A0B0">03</p>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:15.5px;letter-spacing:.05em">Zoomで初回オリエンテーション</p>
+          <p style="margin:6px 0 0;font-size:12.5px;line-height:1.9;color:#6B6060">講座の進め方や学習方法を、専任スタッフと一緒に確認します。</p>
+        </div>
+      </div>
+      <p style="flex:0 0 auto;margin:clamp(60px,9vw,90px) 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;color:#EEB7C4">→</p>
+      <div style="flex:1 1 190px;padding:0 4px">
+        <img src="img/typing.png" alt="自宅で楽しそうに学習する女性" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:55% 50%;border-radius:4px">
+        <div style="margin-top:12px;padding-top:11px;border-top:1px solid rgba(238,124,155,.6)">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.28em;color:#EE7C9B">04</p>
+          <p style="margin:7px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:15.5px;letter-spacing:.05em;color:#D2708D">学習スタート</p>
+          <p style="margin:6px 0 0;font-size:12.5px;line-height:1.9;color:#6B6060">ChatGPTとCanvaを使って、実際にInstagram投稿を作り始めます。</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin:clamp(26px,3.2vw,42px) auto 0;max-width:420px">
+      <p style="margin:0 0 10px 14px;font-family:'Yusei Magic',cursive;font-size:14px;color:#D2708D">✧ かんたん30秒。まずはLINEから</p>
+      <a href="#apply" style="display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:62px;padding:0 26px;background:#06C755;color:#fff;font-size:clamp(15px,1.7vw,17px);font-weight:700;letter-spacing:.14em;text-decoration:none;border-radius:999px;box-shadow:0 8px 18px rgba(6,199,85,.24)" style-hover="background:#05B24C;box-shadow:0 10px 22px rgba(6,199,85,.3)"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="flex:none"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg>LINEから30秒で無料申し込み<span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400">›</span></a>
+      <p style="margin:12px 0 0;text-align:center;font-size:12px;letter-spacing:.06em;color:#8A7E7E">参加費0円｜未経験OK｜質問し放題</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="16 FAQ" style="padding:clamp(64px,8vw,140px) 24px;background:#FDF1F1">
+  <div style="max-width:800px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(26px,3.4vw,46px)">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.36em;color:#C08D9B">Q &amp; A</p>
+      <h2 style="margin:16px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(21px,3vw,32px);letter-spacing:.08em">よくある質問</h2>
+    </div>
+    <div>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>Instagram初心者でも大丈夫ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">はい、大丈夫です。Instagramの基本から学べるので、普段は見るだけという方でも参加できます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>ChatGPTを使ったことがありません。</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">問題ありません。ChatGPTが初めての方でも取り組める内容から分かりやすく進めていきます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>Canvaを使ったことがなくても大丈夫ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">もちろん大丈夫です。デザイン経験がない方でも、実際に投稿を作りながら使い方を学べます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>デザインセンスがなくても大丈夫ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">大丈夫です。本講座では、デザインをすべて自分ひとりで考える必要はありません。ChatGPTに、配色・フォント・写真の配置・文字の見せ方・レイアウトなども相談しながら作っていきます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>Canvaのテンプレートを選ぶだけの講座ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">いいえ。既存のテンプレートを選ぶだけではなく、ChatGPTを使って、投稿に合ったデザイン案そのものを考える方法も学びます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>本当に無料ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">はい。本講座は無料で受講いただけます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>ChatGPTやCanvaの有料プランは必要ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">必要ありません。基本的に無料版を使って学習できます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>分からないことがあったら質問できますか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">はい。学習中に分からないことがあれば、専任のプロに何度でも質問できます。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>パソコンが得意ではなくても大丈夫ですか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">問題ありません。専門的なPCスキルを前提とした講座ではありません。</p>
+      </details>
+      <details open="{{ faqOpen }}" style="border-top:1px solid rgba(214,150,165,.3);border-bottom:1px solid rgba(214,150,165,.3)">
+        <summary style="list-style:none;cursor:pointer;padding:20px 4px"><span style="display:flex;gap:14px;align-items:baseline;font-family:'Shippori Mincho B1',serif;font-size:15.5px;font-weight:600;line-height:1.85;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;color:#EE7C9B;font-size:17px">Q.</span>講座を受ければ、必ず仕事ができますか？</span></summary>
+        <p style="margin:0;padding:0 4px 20px 36px;font-size:14px;line-height:2.1;color:#6B6060">仕事の獲得や収益を保証する講座ではありません。本講座では、Instagram投稿制作など、副業や在宅ワークにも活かせるスキルを学びます。まずは自分で投稿を作れるようになり、そこから投稿制作やInstagram運用などの仕事にチャレンジしていくことができます。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="17 最終CTA" style="position:relative;padding:clamp(48px,5.4vw,92px) 24px clamp(40px,4.6vw,72px);background:linear-gradient(160deg,#FFFCFA 0%,#FEF6F4 60%,#FCEFEF 100%);overflow:hidden">
+  <div data-sp-rev style="position:relative;max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(24px,3.4vw,52px)">
+    <div style="flex:1.25 1 320px">
+      <p style="margin:0;display:inline-block;font-family:'Yusei Magic',cursive;font-size:clamp(15px,1.8vw,18px);color:#D2708D;padding-bottom:7px;border-bottom:1px solid rgba(238,124,155,.4)">✧ あなたの「やってみたい」を、今日から。</p>
+      <h2 style="margin:clamp(18px,2.2vw,28px) 0 0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(21px,2.9vw,32px);line-height:1.7;letter-spacing:.05em"><span style="color:#EE7C9B">「私にもできるかも。」</span>を、<br>今日、最初の一歩に。</h2>
+      <p style="margin:clamp(16px,2vw,24px) 0 0;font-size:14px;line-height:2.15;color:#5E5555">特別なスキルも、経験もいりません。<br>最初から上手にできなくても大丈夫。</p>
+      <p style="margin:16px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.8vw,18px);line-height:1.95;letter-spacing:.04em">AIと一緒なら、<br>「何を作ろう」から始められる。</p>
+      <p style="margin:16px 0 0;font-size:14px;line-height:2.15;color:#5E5555">ひとつ作れたら、もう昨日とは少し違う。<br>その小さな経験が、いつか自分らしく働くための選択肢になるかもしれません。</p>
+      <p style="margin:16px 0 0;padding-top:16px;border-top:1px solid rgba(214,150,165,.32);font-family:'Shippori Mincho B1',serif;font-size:clamp(15px,1.8vw,18px);line-height:1.9;letter-spacing:.04em">まずは、Instagram投稿を<wbr>ひとつ作るところから。</p>
+      <div style="margin:clamp(22px,2.6vw,32px) 0 0;max-width:420px">
+        <a href="#apply" style="display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:64px;padding:0 22px;background:#06C755;color:#fff;font-size:clamp(14.5px,1.7vw,17px);font-weight:700;letter-spacing:.12em;text-decoration:none;border-radius:999px;box-shadow:0 8px 18px rgba(6,199,85,.24)" style-hover="background:#05B24C;box-shadow:0 10px 22px rgba(6,199,85,.3)"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="flex:none"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg>LINEから30秒で無料申し込み<span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400">›</span></a>
+        <p style="margin:12px 0 0;font-size:12px;letter-spacing:.06em;color:#8A7E7E">参加費0円 ｜ 未経験OK ｜ 質問し放題</p>
+      </div>
+    </div>
+    <div style="flex:1 1 280px">
+      <image-slot id="closing-photo" src="img/happy.png" style="width:100%;aspect-ratio:4/5" shape="rounded" radius="4" placeholder="クロージング用の写真（穏やかに微笑む女性など）"></image-slot>
+    </div>
+  </div>
+  <p style="margin:clamp(26px,3vw,40px) auto 0;max-width:620px;text-align:center;font-size:11.5px;line-height:1.9;color:#9A9090">※本講座は、仕事・案件・収益の獲得を保証するものではありません。</p>
+</section>
+
+<footer data-screen-label="18 フッター" style="padding:clamp(32px,3.6vw,48px) 24px clamp(24px,2.8vw,34px);background:#3F3F42;color:#FFFFFF">
+  <div style="max-width:1060px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 26px">
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:14.5px;letter-spacing:.1em">AI × Canva　無料Instagram講座</p>
+      <p style="margin:0;font-size:12.5px;letter-spacing:.06em;color:rgba(255,255,255,.78)">運営会社：株式会社凛</p>
+    </div>
+    <nav data-sp-fnav style="margin:clamp(16px,2vw,22px) 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px">
+      <a href="#" style="padding:8px 0;font-size:12.5px;letter-spacing:.06em;color:#FFFFFF;text-decoration:none" style-hover="color:#F9CBD6">運営会社</a>
+      <span style="width:1px;height:11px;background:rgba(255,255,255,.28)"></span>
+      <a href="#" style="padding:8px 0;font-size:12.5px;letter-spacing:.06em;color:#FFFFFF;text-decoration:none" style-hover="color:#F9CBD6">特定商取引法に基づく表記</a>
+      <span style="width:1px;height:11px;background:rgba(255,255,255,.28)"></span>
+      <a href="#" style="padding:8px 0;font-size:12.5px;letter-spacing:.06em;color:#FFFFFF;text-decoration:none" style-hover="color:#F9CBD6">プライバシーポリシー</a>
+      <span style="width:1px;height:11px;background:rgba(255,255,255,.28)"></span>
+      <a href="#" style="padding:8px 0;font-size:12.5px;letter-spacing:.06em;color:#FFFFFF;text-decoration:none" style-hover="color:#F9CBD6">利用規約</a>
+      <span style="width:1px;height:11px;background:rgba(255,255,255,.28)"></span>
+      <a href="#" style="padding:8px 0;font-size:12.5px;letter-spacing:.06em;color:#FFFFFF;text-decoration:none" style-hover="color:#F9CBD6">お問い合わせ</a>
+    </nav>
+    <p style="margin:clamp(16px,2vw,22px) 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.2);font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.1em;color:rgba(255,255,255,.72)">© 株式会社凛 All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div data-only="sp" data-sp-fixed style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,252,250,.92);border-top:1px solid rgba(214,150,165,.25)">
+  <a href="#apply" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:0 14px;background:#06C755;color:#fff;font-size:14px;font-weight:700;letter-spacing:.06em;text-decoration:none;border-radius:999px;box-shadow:0 6px 16px rgba(6,199,85,.24)"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" style="flex:none"><path d="M12 3.2c-5 0-9.1 3.2-9.1 7.2 0 3.6 3.2 6.6 7.6 7.2.3 0 .5.3.4.6l-.3 1.5c-.1.4.2.6.6.4 1.9-1 4.6-2.7 6.2-4.2 2.2-2 3.7-3.6 3.7-5.5 0-4-4.1-7.2-9.1-7.2z"></path></svg>LINEから30秒で無料申し込み</a>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;faqOpenAll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;FAQ&quot;},&quot;showEarningsExamples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;SECTION 03&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      faqOpen: this.props.faqOpenAll ?? false,
+      showEarnings: this.props.showEarningsExamples ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
