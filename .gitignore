@@ -9,3 +9,7 @@ _比較_*.png
 素材/
 LP_export/uploads/
 ChatGPT Image *.png
+
+# macOSが作る重複コピー
+*\ 2.*
+*\ 2
